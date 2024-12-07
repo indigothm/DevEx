@@ -1,55 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace GitHubAnalyzer.Models
 {
     public class ContributorStats
     {
-        public string Name { get; set; }
-        public int Commits { get; set; }
-        public int Additions { get; set; }
-        public int Deletions { get; set; }
-        public int NetLinesOfCode => Additions - Deletions;
+        public string ContributorName { get; }
+        public int TotalCommits { get; private set; }
+        public int TotalAdditions { get; private set; }
+        public int TotalDeletions { get; private set; }
+        public double AverageCodeQuality { get; private set; }
+        private List<int> CodeQualityScores { get; } = new List<int>();
 
         public ContributorStats(string name)
         {
-            Name = name;
-            Commits = 0;
-            Additions = 0;
-            Deletions = 0;
+            ContributorName = name;
         }
 
-        public void AddCommitStats(int additions, int deletions)
+        public void AddCommitStats(int additions, int deletions, int qualityScore)
         {
-            Commits++;
-            Additions += additions;
-            Deletions += deletions;
+            TotalCommits++;
+            TotalAdditions += additions;
+            TotalDeletions += deletions;
+            CodeQualityScores.Add(qualityScore);
+            AverageCodeQuality = CodeQualityScores.Average();
         }
 
         public ContributorComparison CompareWith(ContributorStats other)
         {
             return new ContributorComparison
             {
-                Name = Name,
-                CommitsChange = CalculatePercentageChange(Commits, other.Commits),
-                AdditionsChange = CalculatePercentageChange(Additions, other.Additions),
-                DeletionsChange = CalculatePercentageChange(Deletions, other.Deletions),
-                NetLinesChange = CalculatePercentageChange(NetLinesOfCode, other.NetLinesOfCode)
+                ContributorName = ContributorName,
+                CommitsDifference = TotalCommits - other.TotalCommits,
+                AdditionsDifference = TotalAdditions - other.TotalAdditions,
+                DeletionsDifference = TotalDeletions - other.TotalDeletions,
+                QualityScoreDifference = AverageCodeQuality - other.AverageCodeQuality
             };
         }
-
-        private static double CalculatePercentageChange(int current, int previous)
-        {
-            if (previous == 0)
-                return current == 0 ? 0 : 100;
-
-            return ((double)(current - previous) / previous) * 100;
-        }
     }
-
-    public class ContributorComparison
-    {
-        public string Name { get; set; }
-        public double CommitsChange { get; set; }
-        public double AdditionsChange { get; set; }
-        public double DeletionsChange { get; set; }
-        public double NetLinesChange { get; set; }
-    }
-} 
+}

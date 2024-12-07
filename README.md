@@ -1,24 +1,36 @@
-# DevEx
+# GitHub Repository Analyzer
 
-A .NET-based developer experience tool that interacts with GitHub using the Octokit library.
+A .NET-based tool that analyzes GitHub repositories, providing both quantitative metrics and AI-powered qualitative code analysis.
 
 ## 🚀 Features
 
-- Console-based user interface
-- GitHub integration using Octokit
-- Modern .NET 9.0 application
+- **Quantitative Analysis**
+  - Track commits, additions, and deletions
+  - Compare statistics across different time periods
+  - Per-contributor metrics and comparisons
+
+- **AI-Powered Qualitative Analysis**
+  - Code quality scoring (1-5) using Azure OpenAI
+  - Automated code review feedback
+  - Quality trends over time
+
+- **Flexible Analysis Options**
+  - Single period analysis
+  - Two-period comparison
+  - Combined quantitative and qualitative insights
 
 ## 📋 Prerequisites
 
-- .NET 9.0 SDK or later
-- GitHub account (for API interactions)
+- .NET 8.0 SDK or later
+- GitHub account and personal access token
+- Azure OpenAI account (for qualitative analysis)
 
 ## 🛠️ Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/DevEx.git
-cd DevEx
+bash
+git clone https://github.com/yourusername/github-analyzer.git
+cd github-analyzer
 ```
 
 2. Build the project:
@@ -31,26 +43,53 @@ dotnet build
 dotnet run
 ```
 
+## 💻 Usage
+
+1. Choose analysis mode:
+   - Single period analysis
+   - Compare two periods
+
+2. Select analysis type:
+   - Quantitative (commits, additions, deletions)
+   - Qualitative (AI-powered code quality analysis)
+   - Both
+
+3. Enter repository details:
+   - Owner/organization name
+   - Repository name
+   - Time period(s)
+   - GitHub token
+
+4. For qualitative analysis, provide Azure OpenAI credentials:
+   - Deployment name
+   - Endpoint
+   - API key
+   - Model ID
+
 ## 🏗️ Project Structure
 
 ```
-DevEx/
-├── Program.cs          # Application entry point
-├── UI/                 # User interface components
-├── Services/           # Business logic and services
-├── Models/             # Data models
-└── DevEx.csproj       # Project configuration
+GitHubAnalyzer/
+├── Program.cs                    # Application entry point
+├── Models/
+│   ├── AnalysisType.cs          # Analysis type enums
+│   ├── ContributorStats.cs      # Contributor statistics model
+│   └── ContributorComparison.cs # Comparison metrics model
+├── Services/
+│   ├── GitHubService.cs         # GitHub interaction logic
+│   └── CodeQualityAnalyzer.cs   # AI-powered code analysis
+├── UI/
+│   └── ConsoleUI.cs             # User interface handling
+└── GitHubAnalyzer.csproj        # Project configuration
 ```
 
 ## 🔧 Technologies Used
 
-- .NET 9.0
-- Octokit v13.0.1 (GitHub API client)
+- .NET 8.0
+- Octokit (GitHub API client)
+- Microsoft Semantic Kernel
+- Azure OpenAI
 - C# 12
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
