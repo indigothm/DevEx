@@ -1,0 +1,17 @@
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\DevEx.exe
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\DevEx.deps.json
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\DevEx.runtimeconfig.json
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\DevEx.dll
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\DevEx.pdb
+C:\Users\ellio\source\repos\DevEx\bin\Debug\net9.0\Octokit.dll
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.csproj.AssemblyReference.cache
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.AssemblyInfoInputs.cache
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.AssemblyInfo.cs
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.csproj.CoreCompileInputs.cache
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.csproj.Up2Date
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.dll
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\refint\DevEx.dll
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.pdb
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\DevEx.genruntimeconfig.cache
+C:\Users\ellio\source\repos\DevEx\obj\Debug\net9.0\ref\DevEx.dll

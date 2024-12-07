@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "V9Dcq6O82uU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ellio\\source\\repos\\DevEx\\DevEx.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ellio\\.nuget\\packages\\octokit\\13.0.1\\octokit.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
