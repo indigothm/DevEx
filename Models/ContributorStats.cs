@@ -29,14 +29,21 @@ namespace GitHubAnalyzer.Models
 
         public ContributorComparison CompareWith(ContributorStats other)
         {
-            return new ContributorComparison
+            var comparison = new ContributorComparison
             {
                 ContributorName = ContributorName,
-                CommitsDifference = TotalCommits - other.TotalCommits,
-                AdditionsDifference = TotalAdditions - other.TotalAdditions,
-                DeletionsDifference = TotalDeletions - other.TotalDeletions,
-                QualityScoreDifference = AverageCodeQuality - other.AverageCodeQuality
+                FirstPeriodCommits = other.TotalCommits,
+                FirstPeriodAdditions = other.TotalAdditions,
+                FirstPeriodDeletions = other.TotalDeletions,
+                FirstPeriodQualityScore = other.AverageCodeQuality,
+                SecondPeriodCommits = TotalCommits,
+                SecondPeriodAdditions = TotalAdditions,
+                SecondPeriodDeletions = TotalDeletions,
+                SecondPeriodQualityScore = AverageCodeQuality
             };
+            
+            comparison.CalculateDifferences();
+            return comparison;
         }
     }
 }

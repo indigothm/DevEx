@@ -1,0 +1,15 @@
+{
+    "Owner": "repo-owner",
+    "Repository": "repo-name",
+    "AnalysisMode": "Comparison",
+    "AnalysisType": "Quantitative",
+    "FirstPeriod": {
+        "Start": "2024-12-02",
+        "End": "2024-12-08"
+    },
+    "SecondPeriod": {
+        "Start": "2024-12-09",
+        "End": "2024-12-15"
+    },
+    "GitHubToken": "YOUR_TOKEN_HERE"
+} 

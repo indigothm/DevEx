@@ -1,100 +1,97 @@
-# GitHub Repository Analyzer
+# DevEx Tool - GitHub Repository Analysis
 
-A .NET-based tool that analyzes GitHub repositories, providing both quantitative metrics and AI-powered qualitative code analysis.
+A tool to analyze GitHub repository contributions and productivity metrics across different time periods.
 
-## 🚀 Features
+## Features
 
-- **Quantitative Analysis**
-  - Track commits, additions, and deletions
-  - Compare statistics across different time periods
-  - Per-contributor metrics and comparisons
+- Single period or comparative analysis
+- Quantitative metrics (commits, additions, deletions)
+- Qualitative analysis with AI-powered code quality scoring
+- Weighted productivity analysis
+- Configuration file support for automated analysis
 
-- **AI-Powered Qualitative Analysis**
-  - Code quality scoring (1-5) using Azure OpenAI
-  - Automated code review feedback
-  - Quality trends over time
+## Running the Tool
 
-- **Flexible Analysis Options**
-  - Single period analysis
-  - Two-period comparison
-  - Combined quantitative and qualitative insights
+You can run the tool in two ways:
 
-## 📋 Prerequisites
+### 1. Interactive Mode
 
-- .NET 8.0 SDK or later
-- GitHub account and personal access token
-- Azure OpenAI account (for qualitative analysis)
-
-## 🛠️ Installation
-
-1. Clone the repository:
-bash
-git clone https://github.com/yourusername/github-analyzer.git
-cd github-analyzer
-```
-
-2. Build the project:
 ```bash
-dotnet build
+dotnet run --project DevEx.csproj
 ```
 
-3. Run the application:
+Follow the prompts to enter:
+- Repository owner and name
+- Analysis mode (single period or comparison)
+- Analysis type (quantitative, qualitative, or both)
+- Time period(s)
+- GitHub token
+
+### 2. Configuration File Mode
+
 ```bash
-dotnet run
+dotnet run --project DevEx.csproj -- config.json
 ```
 
-## 💻 Usage
+Create a `config.json` file with the following structure:
 
-1. Choose analysis mode:
-   - Single period analysis
-   - Compare two periods
-
-2. Select analysis type:
-   - Quantitative (commits, additions, deletions)
-   - Qualitative (AI-powered code quality analysis)
-   - Both
-
-3. Enter repository details:
-   - Owner/organization name
-   - Repository name
-   - Time period(s)
-   - GitHub token
-
-4. For qualitative analysis, provide Azure OpenAI credentials:
-   - Deployment name
-   - Endpoint
-   - API key
-   - Model ID
-
-## 🏗️ Project Structure
-
-```
-GitHubAnalyzer/
-├── Program.cs                    # Application entry point
-├── Models/
-│   ├── AnalysisType.cs          # Analysis type enums
-│   ├── ContributorStats.cs      # Contributor statistics model
-│   └── ContributorComparison.cs # Comparison metrics model
-├── Services/
-│   ├── GitHubService.cs         # GitHub interaction logic
-│   └── CodeQualityAnalyzer.cs   # AI-powered code analysis
-├── UI/
-│   └── ConsoleUI.cs             # User interface handling
-└── GitHubAnalyzer.csproj        # Project configuration
+```json
+{
+    "Owner": "repository-owner",
+    "Repository": "repository-name",
+    "AnalysisMode": "Comparison",
+    "AnalysisType": "Quantitative",
+    "FirstPeriod": {
+        "Start": "2024-12-02",
+        "End": "2024-12-08"
+    },
+    "SecondPeriod": {
+        "Start": "2024-12-09",
+        "End": "2024-12-15"
+    },
+    "GitHubToken": "your-github-token"
+}
 ```
 
-## 🔧 Technologies Used
+## Productivity Analysis
 
-- .NET 8.0
-- Octokit (GitHub API client)
-- Microsoft Semantic Kernel
-- Azure OpenAI
-- C# 12
+The tool now includes a sophisticated weighted productivity analysis that combines multiple metrics:
 
-## 🤝 Contributing
+### Weighting Strategy
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- **Commits**: 30% weight
+  - Measures frequency and consistency of work
+- **Lines Added**: 35% weight
+  - Indicates new feature development and code expansion
+- **Lines Deleted**: 35% weight
+  - Reflects code refinement, cleanup, and optimization
+
+### Productivity Score Calculation
+
+The tool calculates a weighted productivity score using:
+1. Percentage change in each metric
+2. Applied weights to each metric
+3. Combined weighted changes into a single productivity score
+
+Example output:
+```
+Weighted Productivity Analysis:
+Commits Impact (30%): -30.00%
+Additions Impact (35%): +211.65%
+Deletions Impact (35%): +79.75%
+Overall Productivity Change: +261.40%
+```
+
+### Interpreting Results
+
+- **Positive Overall Change**: Indicates improved productivity
+- **Balanced Metrics**: Look for positive trends across all three metrics
+- **High Deletion Impact**: May indicate significant code refactoring
+- **High Addition Impact**: Suggests new feature development
+- **Commit Impact**: Reflects development workflow changes
+
+## Requirements
+
+- .NET 9.0
+- GitHub Personal Access Token with repo scope
+- Internet connection for GitHub API access

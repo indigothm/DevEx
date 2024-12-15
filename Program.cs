@@ -14,7 +14,7 @@ namespace GitHubAnalyzer
             
             try
             {
-                var input = ui.GetUserInput();
+                var input = ui.GetUserInput(args);
                 
                 // Setup Semantic Kernel (only if qualitative analysis is requested)
                 Kernel? kernel = null;
